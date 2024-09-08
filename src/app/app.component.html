@@ -1,9 +1,27 @@
-<google-map [options]="options" height="90vh" width="100%" (mapClick)="moveMap($event)" (mapMousemove)="move($event)" />
-
-
-
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <p>Latitude: {{display?.lat}}</p>
-    <p>Longitude: {{display?.lng}}</p>
+    <div class="col-12">
+      <input
+        pInputText
+        #searchInput
+        id="search-input"
+        type="text"
+        placeholder="Search for a place"
+        (change)="onAddressEntered($event)"
+      />
+    </div>
   </div>
+
+</div>
+
+<div class="row">
+  <div class="col-12 p-0 map">
+    <google-map [options]="options" height="85vh" width="100%" (mapClick)="moveMap($event)" (mapMousemove)="move($event)">
+      <map-marker *ngIf="markerPosition" [position]="markerPosition"></map-marker>
+    </google-map>
+  </div>
+</div>
+<p-progressBar *ngIf="showProgressBar" mode="indeterminate" [style]="{ height: '10px' }" />
+<app-solar-analysis (addressEntered)="onAddressEntered($event)"></app-solar-analysis>
+
+
