@@ -71,6 +71,12 @@ export interface DataLayersResponse {
     sunshineQuantiles: number[];
     groundAreaMeters2: number;
   }
+  export interface GeoTiff {
+    width: number;
+    height: number;
+    rasters: Array<number>[];
+    bounds: Bounds;
+  }
   
   export interface RoofSegmentSizeAndSunshineStats {
     pitchDegrees: number;
